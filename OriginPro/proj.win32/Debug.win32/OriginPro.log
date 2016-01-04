@@ -1,0 +1,38 @@
+﻿生成启动时间为 2016/1/1 15:56:03。
+     1>项目“F:\CocosPro\Origin\OriginPro\proj.win32\OriginPro.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         E:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Cocos\frameworks\cocos2d-x-3.9\cocos\audio\include" /I"C:\Cocos\frameworks\cocos2d-x-3.9\external" /I"C:\Cocos\frameworks\cocos2d-x-3.9\external\chipmunk\include\chipmunk" /I"C:\Cocos\frameworks\cocos2d-x-3.9\extensions" /I..\Classes\origin\state /I..\Classes\origin\memory /I..\Classes\origin\base /I..\Classes\origin /I..\Classes\module /I..\Classes\ui /I..\Classes /I.. /I"C:\Cocos\frameworks\cocos2d-x-3.9\cocos\2d\..\..\cocos\editor-support" /I"C:\Cocos\frameworks\cocos2d-x-3.9\cocos\2d\..\..\cocos" /I"C:\Cocos\frameworks\cocos2d-x-3.9\cocos\2d\..\..\cocos\platform" /I"C:\Cocos\frameworks\cocos2d-x-3.9\cocos\2d\..\..\cocos\platform\desktop" /I"C:\Cocos\frameworks\cocos2d-x-3.9\cocos\2d\..\..\external\glfw3\include\win32" /I"C:\Cocos\frameworks\cocos2d-x-3.9\cocos\2d\..\..\external\win32-specific\gles\include\OGLES" /I"C:\Cocos\frameworks\cocos2d-x-3.9\cocos\2d\..\..\external\freetype2\include\win32\freetype2" /I"C:\Cocos\frameworks\cocos2d-x-3.9\cocos\2d\..\..\external\freetype2\include\win32\\" /I"C:\Cocos\frameworks\cocos2d-x-3.9\cocos\2d\..\..\external" /ZI /nologo /W3 /WX- /MP /Od /Oy- /D WIN32 /D _WINDOWS /D _USE_MATH_DEFINES /D GL_GLEXT_PROTOTYPES /D CC_ENABLE_CHIPMUNK_INTEGRATION=1 /D COCOS2D_DEBUG=1 /D _CRT_SECURE_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D _VARIADIC_MAX=10 /D _USING_V110_SDK71_ /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug.win32\\" /Fd"Debug.win32\vc120.pdb" /Gd /TP /wd4267 /wd4251 /wd4244 /analyze- /errorReport:prompt ..\Classes\origin\base\Component.cpp ..\Classes\origin\base\Entity.cpp ..\Classes\origin\base\System.cpp ..\Classes\origin\state\Exclusion.cpp ..\Classes\origin\state\State.cpp ..\Classes\origin\state\StateDefiniation.cpp
+         Component.cpp
+         Entity.cpp
+         System.cpp
+         Exclusion.cpp
+         State.cpp
+         StateDefiniation.cpp
+     1>f:\cocospro\origin\originpro\classes\origin\state\state.cpp(150): warning C4002: “CC_ASSERT”宏的实参太多
+       PreLinkEvent:
+         if not exist "F:\CocosPro\Origin\OriginPro\proj.win32\Debug.win32\" mkdir "F:\CocosPro\Origin\OriginPro\proj.win32\Debug.win32\"
+         xcopy /Y /Q "C:\Cocos\frameworks\cocos2d-x-3.9\prebuilt\win32\*.*" "F:\CocosPro\Origin\OriginPro\proj.win32\Debug.win32\"
+         
+         :VCEnd
+         复制了 60 个文件
+       Link:
+         E:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\CocosPro\Origin\OriginPro\proj.win32\Debug.win32\OriginPro.exe" /INCREMENTAL /NOLOGO /LIBPATH:F:\CocosPro\Origin\OriginPro\proj.win32\Debug.win32\ /LIBPATH:F:\CocosPro\Origin\OriginPro\proj.win32\Debug.win32\ opengl32.lib glew32.lib libzlib.lib libwebp.lib libiconv.lib freetype.lib winmm.lib ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"F:\CocosPro\Origin\OriginPro\proj.win32\Debug.win32\OriginPro.pdb" /SUBSYSTEM:WINDOWS,"5.01" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\CocosPro\Origin\OriginPro\proj.win32\Debug.win32\OriginPro.lib" /MACHINE:X86 /SAFESEH Debug.win32\game.res
+         Debug.win32\AppDelegate.obj
+         Debug.win32\Component.obj
+         Debug.win32\Entity.obj
+         Debug.win32\System.obj
+         Debug.win32\Exclusion.obj
+         Debug.win32\State.obj
+         Debug.win32\StateDefiniation.obj
+         Debug.win32\MainScene.obj
+         Debug.win32\main.obj
+     1>AppDelegate.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/SAFESEH”规范)
+            正在创建库 F:\CocosPro\Origin\OriginPro\proj.win32\Debug.win32\OriginPro.lib 和对象 F:\CocosPro\Origin\OriginPro\proj.win32\Debug.win32\OriginPro.exp
+     1>State.obj : error LNK2019: 无法解析的外部符号 "public: __thiscall origin::ExclusionSystem::ExclusionSystem(class origin::ExclusionComponent *)" (??0ExclusionSystem@origin@@QAE@PAVExclusionComponent@1@@Z)，该符号在函数 "public: virtual unsigned int __thiscall origin::State::exclusion(void)" (?exclusion@State@origin@@UAEIXZ) 中被引用
+     1>State.obj : error LNK2019: 无法解析的外部符号 "public: virtual __thiscall origin::ExclusionSystem::~ExclusionSystem(void)" (??1ExclusionSystem@origin@@UAE@XZ)，该符号在函数 "public: virtual unsigned int __thiscall origin::State::exclusion(void)" (?exclusion@State@origin@@UAEIXZ) 中被引用
+     1>F:\CocosPro\Origin\OriginPro\proj.win32\Debug.win32\OriginPro.exe : fatal error LNK1120: 2 个无法解析的外部命令
+     1>已完成生成项目“F:\CocosPro\Origin\OriginPro\proj.win32\OriginPro.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:32.36

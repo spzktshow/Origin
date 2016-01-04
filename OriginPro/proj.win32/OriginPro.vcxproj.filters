@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="win32">
+      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\ui">
+      <UniqueIdentifier>{bb51ff2e-1976-4788-bc66-668e9930bb04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\module">
+      <UniqueIdentifier>{0d957477-79cd-4356-97a1-3be9b97f655a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\origin">
+      <UniqueIdentifier>{bde32025-5912-4cfb-9424-42dee70b21bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\origin\base">
+      <UniqueIdentifier>{5bb48fbb-8440-477e-9101-5637c47bc029}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\origin\memory">
+      <UniqueIdentifier>{81b36d84-b21f-428d-bea4-be56b8b82a91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\origin\state">
+      <UniqueIdentifier>{b65022b0-5a62-4058-afc9-de314372370a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\origin\base\Component.cpp">
+      <Filter>src\origin\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\origin\base\Entity.cpp">
+      <Filter>src\origin\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\origin\base\System.cpp">
+      <Filter>src\origin\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\origin\state\Exclusion.cpp">
+      <Filter>src\origin\state</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\origin\state\State.cpp">
+      <Filter>src\origin\state</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\origin\state\StateDefiniation.cpp">
+      <Filter>src\origin\state</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\MainScene.cpp">
+      <Filter>src\ui</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\origin\base\Component.h">
+      <Filter>src\origin\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\origin\base\Entity.h">
+      <Filter>src\origin\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\origin\base\System.h">
+      <Filter>src\origin\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\origin\memory\ODeque.h">
+      <Filter>src\origin\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\origin\memory\OList.h">
+      <Filter>src\origin\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\origin\state\Exclusion.h">
+      <Filter>src\origin\state</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\origin\state\State.h">
+      <Filter>src\origin\state</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\origin\state\StateDefiniation.h">
+      <Filter>src\origin\state</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\origin\origin.h">
+      <Filter>src\origin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\origin\OriginMacros.h">
+      <Filter>src\origin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\MainScene.h">
+      <Filter>src\ui</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="game.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
