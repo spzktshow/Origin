@@ -6,7 +6,7 @@
 
 NS_O_BEGIN
 
-class StateDefinitaion : public cocos2d::Ref
+class StateDefinitaion
 {
 public:
 	StateDefinitaion(const std::string& stateType);
@@ -20,22 +20,19 @@ protected:
 	std::string _stateType;
 };
 
-class State : public cocos2d::Ref, ExclusionSystemProtocol
+class State : public cocos2d::Ref
 {
 public:
-	State(const StateDefinitaion * stateDefiniation, ExclusionComponent * exclusionComponent);
+	State(const StateDefinitaion * stateDefiniation);
 	virtual ~State();
 
 	virtual bool init();
 
-	void start(unsigned int defaultExclusionCount = ExclusionDefiniation::DEFAULT_EXCLUSION);
+	void start();
 	void stop();
 
 	void pause();
 	void resume();
-
-	/*****检测当前排斥*****/
-	void refresh();
 
 	bool isStart() const;
 	bool isRunning() const;
@@ -44,22 +41,14 @@ public:
 
 	cocos2d::EventDispatcher * getEventDispatcher() const;
 	cocos2d::Scheduler * getScheduler() const;
-
-	void setExclusionComponent(ExclusionComponent * exclusionComponent);
-
-	unsigned int exclusion() override;
-	unsigned int unexclusion() override;
-	void resetExclusion() override;
-	ExclusionComponent * getExclusionComponent() override;
 protected:
-	virtual void startExecute();
-	virtual void stopExecute();
+	virtual void startExecute() = 0;
+	virtual void stopExecute() = 0;
 
-	virtual void pauseExecute();
-	virtual void resumeExecute();
+	virtual void pauseExecute() = 0;
+	virtual void resumeExecute() = 0;
 
 	const StateDefinitaion * _stateDefiniation;
-	ExclusionComponent * _exclusionComponent;
 
 	/****标记状态是否已经开始****/
 	bool _start;
@@ -70,31 +59,23 @@ protected:
 	cocos2d::Scheduler * _scheduler;
 };
 
-class StateReferenceComponent : public Component
+class DynamicState : public State, public ExclusionProtocol
 {
 public:
-	StateReferenceComponent();
-	virtual ~StateReferenceComponent();
+	DynamicState(const StateDefinitaion * stateDefiniation, const ExclusionDefiniation * exclusionDefiniation);
+	virtual ~DynamicState();
 
-	void setStateData(State * data);
-	State * getStateData() const;
+	unsigned int exclusion() override;
+	unsigned int unexclusion() override;
+	void resetExclusion() override;
 
-	void setExclusionCount(unsigned int exclusionCount);
-	unsigned int getExclusionCount() const;
+	void start(unsigned int exclusionCount);
+	void startDefault();
+	virtual void refresh();
+
+	const Exclusion * getExclusion() const;
 protected:
-	State * _state;
-	unsigned int _exclusionCount;
-};
-
-template <class T>
-class StateContainer : public State
-{
-public:
-	StateContainer<T>(const StateDefinitaion * stateDefiniation);
-	virtual ~StateContainer<T>();
-protected:
-	
-	T _container;
+	Exclusion * _exclucsion;
 };
 
 NS_O_END

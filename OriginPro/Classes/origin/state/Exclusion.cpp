@@ -1,10 +1,10 @@
-#include "Exclusion.h"
-
+﻿#include "Exclusion.h"
+#include "cocos2d.h"
 NS_O_BEGIN
 /***************ExclusionDefiniation****************/
 const unsigned int ExclusionDefiniation::DEFAULT_EXCLUSION = 0;
 
-ExclusionDefiniation::ExclusionDefiniation(ExclusionType type){}
+ExclusionDefiniation::ExclusionDefiniation(ExclusionType type) :_defaultExclusion(ExclusionDefiniation::DEFAULT_EXCLUSION), _type(type){}
 
 ExclusionDefiniation::~ExclusionDefiniation(){}
 
@@ -13,64 +13,72 @@ const ExclusionDefiniation::ExclusionType& ExclusionDefiniation::getType() const
 	return _type;
 }
 
+unsigned int ExclusionDefiniation::getDefaultExculsion() const
+{
+	return _defaultExclusion;
+}
+
 /**************ExclusionProtocol*****************/
 ExclusionProtocol::~ExclusionProtocol()
 {
 
 }
 
-/********ExclusionComponent*********/
-ExclusionComponent::ExclusionComponent(const ExclusionDefiniation * exclusionDefiniation) 
-	:_exclusionDefiniation(exclusionDefiniation)
+/********Exclusion*********/
+Exclusion::Exclusion(const ExclusionDefiniation * exclusionDefiniation) :_exclusionDefiniation(exclusionDefiniation)
 {
-	_exclusionCount = ExclusionDefiniation::DEFAULT_EXCLUSION;
+	CCASSERT(_exclusionDefiniation != nullptr, "exclusionDefiniation must !=nullptr");
 }
 
-ExclusionComponent::~ExclusionComponent()
+Exclusion::~Exclusion()
 {
-
+	_exclusionDefiniation = nullptr;
 }
 
-void ExclusionComponent::setExclusionCount(unsigned int exclusionCount)
+unsigned int Exclusion::exclusion()
 {
-	_exclusionCount = exclusionCount;
-}
-
-unsigned int ExclusionComponent::getExclusionCount() const
-{
+	CCASSERT(_exclusionCount > 0, "exclusion count should be greater than 0");
+	++_exclusionCount;
 	return _exclusionCount;
 }
 
-const ExclusionDefiniation * ExclusionComponent::getExclusionDefiniation() const
+unsigned int Exclusion::unexclusion()
 {
-	return _exclusionDefiniation;
+	CCASSERT(_exclusionCount > 0, "exclusion count should be greater than 0");
+	--_exclusionCount;
+	return _exclusionCount;
 }
 
-/********************ExclusionSystem********************/
-unsigned int ExclusionSystem::exclusion()
+void Exclusion::resetExclusion()
 {
-	CCASSERT(getExclusionComponent()->getExclusionCount() > 0, "state exclusion count should be greater than 0");
-	const unsigned int value = 1;
-	getExclusionComponent()->setExclusionCount(getExclusionComponent()->getExclusionCount() + value);
-	return value;
+	CCASSERT(_exclusionCount > 0, "exclusion count should be greater than 0");
+	_exclusionCount = _exclusionDefiniation->getDefaultExculsion();
 }
 
-unsigned int ExclusionSystem::unexclusion()
+const ExclusionDefiniation::ExclusionType& Exclusion::checkType() const
 {
-	CCASSERT(getExclusionComponent()->getExclusionCount() > 0, "state exclusion count should be greater than 0");
-	const unsigned int value = 1;
-	getExclusionComponent()->setExclusionCount(getExclusionComponent()->getExclusionCount() - value);
-	return value;
-}
-
-void ExclusionSystem::resetExclusion()
-{
-	getExclusionComponent()->setExclusionCount(ExclusionDefiniation::DEFAULT_EXCLUSION);
-}
-
-ExclusionComponent * ExclusionSystem::getExclusionComponent()
-{
-	return dynamic_cast<ExclusionComponent *>(_component);
+	if (_exclusionDefiniation->getType() == ExclusionDefiniation::ExclusionType::PAUSE)
+	{
+		if (_exclusionCount == ExclusionDefiniation::DEFAULT_EXCLUSION)
+		{
+			return ExclusionDefiniation::ExclusionType::PAUSE;
+		}
+		else
+		{
+			return ExclusionDefiniation::ExclusionType::RESUME;
+		}
+	}
+	else //_exclusionDefiniation->getType() == ExclusionDefiniation::ExclusionType::RESUME
+	{
+		if (_exclusionCount == ExclusionDefiniation::DEFAULT_EXCLUSION)
+		{
+			return ExclusionDefiniation::ExclusionType::RESUME;
+		}
+		else
+		{
+			return ExclusionDefiniation::ExclusionType::PAUSE;
+		}
+	}
 }
 
 NS_O_END;
